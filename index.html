@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>شركة برمجيات| حلول رقمية احترافية</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+    --black:#0D0D0D;
+    --gold:#D4AF37;
+    --white:#ffffff;
+    --gray:#1b1b1b;
+    --transition:0.4s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Cairo',sans-serif;
+    background:var(--black);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    color:var(--gold);
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#ccc;
+    max-width:700px;
+    margin:auto auto 60px;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(13,13,13,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,175,55,.15);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:900;
+    color:var(--gold);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    font-weight:700;
+    transition:var(--transition);
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.menu-btn{
+    display:none;
+    font-size:1.7rem;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-text h1{
+    font-size:5rem;
+    color:var(--gold);
+    font-weight:900;
+    line-height:1.2;
+}
+
+.hero-text p{
+    font-size:1.3rem;
+    color:#d5d5d5;
+    margin:20px 0 35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:var(--gold);
+    color:#000;
+    border-radius:50px;
+    font-weight:800;
+    transition:var(--transition);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(212,175,55,.4);
+}
+
+.hero-image img{
+    border-radius:25px;
+    box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:#111;
+}
+
+.about-content{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+    line-height:2;
+    font-size:1.1rem;
+    color:#ddd;
+}
+
+/* ================= CARDS ================= */
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:#151515;
+    border:1px solid rgba(212,175,55,.15);
+    padding:35px;
+    border-radius:20px;
+    transition:var(--transition);
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--gold);
+    box-shadow:0 15px 40px rgba(212,175,55,.15);
+}
+
+.card i{
+    font-size:3rem;
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:1.4rem;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:20px;
+    position:relative;
+}
+
+.gallery-item img{
+    height:280px;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.15);
+}
+
+.gallery-item::after{
+    content:"مشروع احترافي";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.65);
+    color:var(--gold);
+    font-size:1.3rem;
+    font-weight:800;
+    opacity:0;
+    transition:.4s;
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    background:#111;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat{
+    text-align:center;
+    padding:35px;
+}
+
+.stat h3{
+    font-size:3rem;
+    color:var(--gold);
+}
+
+.stat p{
+    margin-top:10px;
+    font-weight:700;
+}
+
+/* ================= TEAM ================= */
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.team-card{
+    background:#151515;
+    border-radius:20px;
+    overflow:hidden;
+    text-align:center;
+    transition:var(--transition);
+}
+
+.team-card:hover{
+    transform:translateY(-10px);
+}
+
+.team-card img{
+    height:300px;
+    object-fit:cover;
+}
+
+.team-card-content{
+    padding:25px;
+}
+
+.team-card h3{
+    color:var(--gold);
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonials{
+    background:#111;
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.testimonial{
+    background:#151515;
+    padding:30px;
+    border-radius:20px;
+}
+
+.stars{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-form{
+    max-width:800px;
+    margin:auto;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:16px;
+    background:#151515;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:12px;
+    font-family:inherit;
+}
+
+textarea{
+    resize:none;
+    height:180px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#080808;
+    padding:40px 0;
+    text-align:center;
+    border-top:1px solid rgba(212,175,55,.15);
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.footer-links a:hover{
+    color:var(--gold);
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+.hero-content,
+.grid-3,
+.gallery-grid,
+.team-grid,
+.testimonial-grid,
+.stats-grid{
+    grid-template-columns:1fr 1fr;
+}
+
+.hero-text h1{
+    font-size:4rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.menu-btn{
+    display:block;
+}
+
+.nav-links{
+    position:absolute;
+    top:100%;
+    right:0;
+    width:100%;
+    background:#111;
+    flex-direction:column;
+    text-align:center;
+    display:none;
+    padding:20px 0;
+}
+
+.nav-links.active{
+    display:flex;
+}
+
+.hero-content,
+.grid-3,
+.gallery-grid,
+.team-grid,
+.testimonial-grid,
+.stats-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-text{
+    text-align:center;
+}
+
+.hero-text h1{
+    font-size:3rem;
+}
+
+.section-title{
+    font-size:2.3rem;
+}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+    <div class="container navbar">
+        <div class="logo">شركة رقم 3 برمجة</div>
+
+        <nav class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من نحن</a>
+            <a href="#services">الخدمات</a>
+            <a href="#features">المميزات</a>
+            <a href="#portfolio">الأعمال</a>
+            <a href="#team">الفريق</a>
+            <a href="#contact">التواصل</a>
+        </nav>
+
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+<div class="container hero-content">
+
+<div class="hero-text reveal">
+    <h1>شركة رقم 3 برمجة</h1>
+    <p>
+        نحول أفكارك إلى مشاريع رقمية احترافية
+    </p>
+    <a href="#contact" class="btn">ابدأ الآن</a>
+</div>
+
+<div class="hero-image reveal">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="">
+</div>
+
+</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+<div class="container">
+
+<h2 class="section-title reveal">من نحن</h2>
+
+<p class="about-content reveal">
+متجر رقم 3 متخصص في تطوير المواقع الإلكترونية والمتاجر الرقمية الحديثة
+وأنظمة الإدارة المتقدمة والحلول التقنية المبتكرة. نعمل على تحويل الأفكار
+إلى مشاريع رقمية ناجحة تجمع بين التصميم الاحترافي والأداء العالي والتجربة
+المتميزة للمستخدم.
+</p>
+
+</div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
+<div class="container">
+
+<h2 class="section-title reveal">خدماتنا</h2>
+
+<div class="grid-3">
+
+<div class="card reveal">
+<i class="fas fa-laptop-code"></i>
+<h3>تصميم مواقع احترافية</h3>
+<p>مواقع عصرية سريعة ومتجاوبة.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-cart-shopping"></i>
+<h3>برمجة متاجر إلكترونية</h3>
+<p>حلول متكاملة للبيع عبر الإنترنت.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-globe"></i>
+<h3>تطوير تطبيقات ويب</h3>
+<p>أنظمة ويب حديثة عالية الأداء.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-briefcase"></i>
+<h3>أنظمة إدارة الأعمال</h3>
+<p>أتمتة العمليات الإدارية بكفاءة.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-chart-line"></i>
+<h3>تحسين محركات البحث SEO</h3>
+<p>رفع الظهور وتحقيق نتائج أفضل.</p>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-headset"></i>
+<h3>الدعم الفني</h3>
+<p>مساندة مستمرة وحلول سريعة.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="about" id="features">
+<div class="container">
+
+<h2 class="section-title reveal">مميزاتنا</h2>
+
+<div class="grid-3">
+
+<div class="card reveal">
+<i class="fas fa-bolt"></i>
+<h3>سرعة الإنجاز</h3>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-award"></i>
+<h3>جودة عالية</h3>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-life-ring"></i>
+<h3>دعم مستمر</h3>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-tags"></i>
+<h3>أسعار منافسة</h3>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-shield-halved"></i>
+<h3>حماية وأمان</h3>
+</div>
+
+<div class="card reveal">
+<i class="fas fa-wand-magic-sparkles"></i>
+<h3>تصميم عصري</h3>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+
+<section id="portfolio">
+<div class="container">
+
+<h2 class="section-title reveal">معرض الأعمال</h2>
+
+<div class="gallery-grid">
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item reveal">
+<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=80">
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+<div class="container">
+
+<h2 class="section-title reveal">إحصائياتنا</h2>
+
+<div class="stats-grid">
+
+<div class="stat reveal">
+<h3 class="counter" data-target="500">0</h3>
+<p>مشروع</p>
+</div>
+
+<div class="stat reveal">
+<h3 class="counter" data-target="350">0</h3>
+<p>عميل</p>
+</div>
+
+<div class="stat reveal">
+<h3 class="counter" data-target="5">0</h3>
+<p>سنوات خبرة</p>
+</div>
+
+<div class="stat reveal">
+<h3 class="counter" data-target="98">0</h3>
+<p>% رضا العملاء</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= TEAM ================= -->
+
+<section id="team">
+<div class="container">
+
+<h2 class="section-title reveal">منشئو العمل</h2>
+
+<div class="team-grid">
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80">
+<div class="team-card-content">
+<h3>علي السقاف</h3>
+<p>مؤسس ومطور</p>
+</div>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80">
+<div class="team-card-content">
+<h3>إبراهيم السقاف</h3>
+<p>مطور واجهات</p>
+</div>
+</div>
+
+<div class="team-card reveal">
+<img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80">
+<div class="team-card-content">
+<h3>محمد بادغيش</h3>
+<p>مطور نظم وحلول رقمية</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="testimonials">
+<div class="container">
+
+<h2 class="section-title reveal">آراء العملاء</h2>
+
+<div class="testimonial-grid">
+
+<div class="testimonial reveal">
+<div class="stars">
+★★★★★
+</div>
+<p>
+خدمة احترافية جداً وتنفيذ سريع يفوق التوقعات.
+</p>
+</div>
+
+<div class="testimonial reveal">
+<div class="stars">
+★★★★★
+</div>
+<p>
+أفضل تجربة تعامل مع فريق تطوير محترف ومتعاون.
+</p>
+</div>
+
+<div class="testimonial reveal">
+<div class="stars">
+★★★★★
+</div>
+<p>
+نتائج رائعة وتصميم عصري ساعد في نمو أعمالنا.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+<div class="container">
+
+<h2 class="section-title reveal">تواصل معنا</h2>
+
+<form class="contact-form reveal">
+
+<div class="form-group">
+<input type="text" placeholder="الاسم">
+</div>
+
+<div class="form-group">
+<input type="email" placeholder="البريد الإلكتروني">
+</div>
+
+<div class="form-group">
+<textarea placeholder="الرسالة"></textarea>
+</div>
+
+<button class="btn" type="submit">
+إرسال
+</button>
+
+</form>
+
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+<h3 style="color:#D4AF37;">برمجة</h3>
+
+<div class="footer-links">
+<a href="#home">الرئيسية</a>
+<a href="#about">من نحن</a>
+<a href="#services">الخدمات</a>
+<a href="#portfolio">الأعمال</a>
+<a href="#contact">التواصل</a>
+</div>
+
+<p>
+© 2026 برمجة - جميع الحقوق محفوظة.
+</p>
+
+</div>
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+// Mobile Menu
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click',()=>{
+    navLinks.classList.toggle('active');
+});
+
+// Scroll Reveal
+
+const reveals = document.querySelectorAll('.reveal');
+
+function revealElements(){
+    reveals.forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if(top < windowHeight - 100){
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll',revealElements);
+window.addEventListener('load',revealElements);
+
+// Counter Animation
+
+const counters = document.querySelectorAll('.counter');
+
+const counterObserver = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+const counter = entry.target;
+const target = +counter.dataset.target;
+
+let count = 0;
+
+const updateCounter = ()=>{
+
+const increment = target / 100;
+
+count += increment;
+
+if(count < target){
+counter.innerText = Math.ceil(count);
+requestAnimationFrame(updateCounter);
+}else{
+counter.innerText = target + "+";
+}
+
+};
+
+updateCounter();
+counterObserver.unobserve(counter);
+
+}
+
+});
+
+},{threshold:0.5});
+
+counters.forEach(counter=>{
+counterObserver.observe(counter);
+});
+
+// Contact Form
+
+document.querySelector('form').addEventListener('submit',function(e){
+e.preventDefault();
+alert('تم إرسال رسالتك بنجاح.');
+});
+
+</script>
+
+</body>
+</html>
