@@ -33,18 +33,15 @@
     </header>
 
     <main class="p-4 space-y-4">
-        <!-- المنتجات في السلة سيتم إضافتها هنا برمجياً -->
+        <!-- حاوية المنتجات الفارغة التي ستعُبأ برمجياً -->
         <div id="cartItemsContainer" class="space-y-4">
-            <div class="text-center py-10 text-gray-400 font-bold">
-                <i class="fa-solid fa-cart-shopping text-4xl mb-4 text-gray-300 block"></i>
-                سلة المشتريات فارغة حالياً
-            </div>
+            <div class="text-center py-10 text-gray-400 font-bold">السلة فارغة حالياً</div>
         </div>
 
         <!-- الإجمالي -->
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-6">
             <div class="flex justify-between items-center mb-2 text-gray-500"><span>إجمالي المنتجات</span><span id="totalItemsCount">0</span></div>
-            <div class="flex justify-between items-center text-xl font-black text-navy border-t pt-2 mt-2"><span>السعر الإجمالي</span><span class="text-purple" id="totalPriceAmount">0 ر.س</span></div>
+            <div class="flex justify-between items-center text-xl font-black text-navy border-t pt-2 mt-2"><span>السعر الإجمالي</span><span id="totalPriceAmount" class="text-purple">0 ر.س</span></div>
         </div>
 
         <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-purple to-navy text-white font-black text-xl py-4 rounded-2xl shadow-lg shadow-purple/30 transform transition active:scale-95 mt-4">

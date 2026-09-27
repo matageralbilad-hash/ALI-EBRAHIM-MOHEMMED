@@ -249,7 +249,7 @@
                 } else {
                     shelfProducts.forEach(p => {
                         const shortDesc = window.getWords(p.description, 10);
-                        const shortNotes = window.getWords(p.description, 5); // Assuming notes are part of desc for now, or if you have a notes field
+                        const shortNotes = window.getWords(p.description, 5); 
                         
                         let priceHtml = '';
                         if (p.offerPrice) {
@@ -262,15 +262,16 @@
                         }
 
                         shelfHtml += `
-                        <div class="snap-center shrink-0 w-[200px] bg-white rounded-3xl shadow-sm border border-gray-100 p-3 relative flex flex-col justify-between transform transition hover:-translate-y-1 hover:shadow-xl">
-                            <!-- الأزرار العلوية -->
-                            <div class="absolute top-4 left-4 flex flex-col gap-2 z-10">
-                                <button class="bg-white/90 backdrop-blur p-2 rounded-full text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition w-8 h-8 flex items-center justify-center" onclick="event.stopPropagation(); alert('تم الإضافة للمفضلة')"><i class="fa-regular fa-heart"></i></button>
-                                <button class="bg-white/90 backdrop-blur p-2 rounded-full text-blue-500 shadow-sm hover:bg-blue-500 hover:text-white transition w-8 h-8 flex items-center justify-center" onclick="event.stopPropagation(); alert('تم نسخ رابط المنتج')"><i class="fa-solid fa-share-nodes"></i></button>
+                        <div class="snap-center shrink-0 w-[200px] bg-white rounded-3xl shadow-sm border border-gray-100 p-3 relative flex flex-col justify-between transform transition hover:-translate-y-1 hover:shadow-xl" onclick="openProductModal('${p.id}')">
+                            
+                            <!-- الأزرار العلوية مع z-20 و stopPropagation لمنع فتح الدولاب -->
+                            <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                                <button class="bg-white/90 backdrop-blur p-2 rounded-full text-red-500 shadow-sm hover:bg-red-500 hover:text-white transition w-8 h-8 flex items-center justify-center relative z-20" onclick="addToFavorites(event, '${p.id}')"><i class="fa-regular fa-heart pointer-events-none"></i></button>
+                                <button class="bg-white/90 backdrop-blur p-2 rounded-full text-blue-500 shadow-sm hover:bg-blue-500 hover:text-white transition w-8 h-8 flex items-center justify-center relative z-20" onclick="shareProduct(event, '${p.id}')"><i class="fa-solid fa-share-nodes pointer-events-none"></i></button>
                             </div>
                             
                             <!-- صورة وبطاقة المنتج -->
-                            <div class="cursor-pointer" onclick="openProductModal('${p.id}')">
+                            <div class="cursor-pointer">
                                 <div class="h-36 bg-gray-50 rounded-2xl mb-3 flex items-center justify-center overflow-hidden">
                                     <img src="${p.imageUrl || 'https://via.placeholder.com/150'}" class="max-h-full object-contain mix-blend-multiply" alt="${p.name}">
                                 </div>
@@ -286,7 +287,7 @@
                             </div>
 
                             <!-- زر افتح -->
-                            <button onclick="openProductModal('${p.id}')" class="w-full bg-navy text-white text-sm font-bold py-2.5 rounded-xl mt-3 hover:bg-purple transition shadow-md flex justify-center items-center gap-2">
+                            <button class="w-full bg-navy text-white text-sm font-bold py-2.5 rounded-xl mt-3 hover:bg-purple transition shadow-md flex justify-center items-center gap-2">
                                 افتح التفاصيل <i class="fa-solid fa-arrow-left-long text-xs"></i>
                             </button>
                         </div>
@@ -338,7 +339,7 @@
             document.getElementById('modalImg').src = p.imageUrl || 'https://via.placeholder.com/300';
             document.getElementById('modalTitle').innerText = p.name;
             document.getElementById('modalDesc').innerText = p.description;
-            document.getElementById('modalNotes').innerText = "تأكد من اختيار الكمية المناسبة. التوصيل متاح وتجهيز الطلبات يتم فوراً من الفرع."; // يمكن ربطها بحقل الملاحظات إذا وجد
+            document.getElementById('modalNotes').innerText = "تأكد من اختيار الكمية المناسبة. التوصيل متاح وتجهيز الطلبات يتم فوراً من الفرع.";
             
             let priceHtml = '';
             if (p.offerPrice) {
@@ -373,6 +374,17 @@
         window.addToCartAndAnimate = function() {
             alert(`تم إضافة ${qty} من ${window.currentProduct.name} إلى سلة الشراء بنجاح!`);
             closeProductModal();
+        };
+
+        // دوال الإضافة للمفضلة والمشاركة المستقلة
+        window.addToFavorites = function(e, id) {
+            e.stopPropagation(); // السحر الذي يمنع فتح الدولاب
+            alert('تم إضافة المنتج للمفضلة بنجاح!');
+        };
+
+        window.shareProduct = function(e, id) {
+            e.stopPropagation(); // السحر الذي يمنع فتح الدولاب
+            alert('تم نسخ رابط المنتج للمشاركة!');
         };
 
     </script>
